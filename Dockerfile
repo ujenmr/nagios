@@ -41,26 +41,6 @@ RUN apt-get update && \
     make install-plugin && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Additional plugins
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        libhttp-message-perl \
-        liblwp-useragent-determined-perl \
-        default-jre \
-        libredis-perl \
-        libnagios-plugin-perl \
-        python-pip && \
-    pip install python-consul pymongo && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-#RUN apt-get update && \
-#    apt-get install -y --no-install-recommends git && \
-#    git clone https://github.com/harisekhon/nagios-plugins && \
-#    cd nagios-plugins && \
-#    make && \
-#    mv check_* /opt/nagios/libexec && \
-#    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 WORKDIR /
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
