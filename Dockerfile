@@ -10,8 +10,8 @@ RUN useradd nagios && \
     groupadd nagcmd && \
     usermod -a -G nagcmd nagios && \
     apt-get update && \
-    apt-get install -y --no-install-recommends wget build-essential unzip apache2-utils && \
-    wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-${NAGIOS_VERSION}.tar.gz && \
+    apt-get install -y --no-install-recommends wget build-essential unzip apache2-utils ca-certificates && \
+    wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-${NAGIOS_VERSION}.tar.gz && \
     tar -zxvf nagios-${NAGIOS_VERSION}.tar.gz && \
     cd nagios-${NAGIOS_VERSION} && \
     ./configure --prefix=/opt/nagios --sysconfdir=/etc/nagios --localstatedir=/var/lib/nagios --with-nagios-group=nagios --with-command-group=nagcmd && \
